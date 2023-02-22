@@ -19,7 +19,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -a -o notifica
 
 # Use distroless as minimal base image to package the manager binary
 # Refer to https://github.com/GoogleContainerTools/distroless for more details
-FROM kubespheredev/distroless-static:nonroot
+FROM registry-edge.cosmoplat.com/d3osdev/distroless-static:nonroot
 WORKDIR /
 COPY --from=builder /workspace/notification-manager .
 USER nonroot:nonroot

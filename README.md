@@ -37,7 +37,7 @@ Receiver CRDs like EmailReceiver, WechatReceiver, SlackReceiver and WebhookRecei
 - A tenant EmailReceiver receives alerts with specified tenant label like `user` or `namespace` 
 
 Usually alerts received from Alertmanager contains a `namespace` label, Notification Manager uses this label to decide which receiver to use for sending notifications:
-- For KubeSphere, Notification Manager will try to find workspace `user` in that `namespace`'s rolebinding and then find receivers with `user = xxx` label.
+- For D3os, Notification Manager will try to find workspace `user` in that `namespace`'s rolebinding and then find receivers with `user = xxx` label.
 - For other Kubernetes cluster, Notification Manager will try to find receivers with `namespace = xxx` label. 
 
 For alerts without a `namespace` label, for example alerts of node or kubelet, user can set up a receiver with `type = global` label to receive alerts without a `namespace` label. A global receiver sends notifications for all alerts received regardless any label. A global receiver is usually set for an admin role.
@@ -56,15 +56,15 @@ A receiver could be configured without xxxConfigSelector, in which case Notifica
 Deploy CRDs and the Notification Manager Operator:
 
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/kubesphere/notification-manager/release-1.0/config/bundle.yaml
+kubectl apply -f https://raw.githubusercontent.com/d3os/notification-manager/release-1.0/config/bundle.yaml
 ```
 
-### Deploy Notification Manager in KubeSphere (Uses `workspace` to distinguish each tenant user):
+### Deploy Notification Manager in D3os (Uses `workspace` to distinguish each tenant user):
 
 #### Deploy Notification Manager
 ```shell
 cat <<EOF | kubectl apply -f -
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: NotificationManager
 metadata:
   name: notification-manager
@@ -77,7 +77,7 @@ spec:
     requests:
       cpu: 100m
       memory: 20Mi
-  image: kubesphere/notification-manager:v1.0.0
+  image: d3os/notification-manager:v1.0.0
   imagePullPolicy: IfNotPresent
   serviceAccountName: notification-manager-sa
   portName: webhook
@@ -118,7 +118,7 @@ EOF
 #### Deploy the default EmailConfig and global EmailReceiver
 ```
 cat <<EOF | kubectl apply -f -
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Config
 metadata:
   labels:
@@ -137,7 +137,7 @@ spec:
       host: imap.xyz.com
       port: 25
 ---
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Receiver
 metadata:
   labels:
@@ -160,7 +160,7 @@ metadata:
   labels:
     app: notification-manager
   name: default-email-secret
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 type: Opaque
 EOF
 ```
@@ -168,7 +168,7 @@ EOF
 #### Deploy a tenant EmailConfig and a EmailReceiver
 ```
 cat <<EOF | kubectl apply -f -
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Config
 metadata:
   labels:
@@ -188,7 +188,7 @@ spec:
       host: imap.xyz.com
       port: 25
 ---
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Receiver
 metadata:
   labels:
@@ -215,7 +215,7 @@ metadata:
   labels:
     app: notification-manager
   name: default-email-secret
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 type: Opaque
 EOF
 ```
@@ -224,7 +224,7 @@ EOF
 
 ```
 cat <<EOF | kubectl apply -f -
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Config
 metadata:
   name: default-wechat-config
@@ -240,7 +240,7 @@ spec:
     wechatApiCorpId: < wechat-api-corp-id >
     wechatApiAgentId: < wechat-api-agent-id >
 ---
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Receiver
 metadata:
   name: global-wechat-receiver
@@ -270,7 +270,7 @@ metadata:
   labels:
     app: notification-manager
   name: < wechat-api-secret >
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 type: Opaque
 EOF
 ```
@@ -283,7 +283,7 @@ EOF
 
 ```
 cat <<EOF | kubectl apply -f -
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Config
 metadata:
   name: default-slack-config
@@ -296,7 +296,7 @@ spec:
       key: token
       name: < slack-token-secret >
 ---
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Receiver
 metadata:
   name: global-slack-receiver
@@ -318,7 +318,7 @@ metadata:
   labels:
     app: notification-manager
   name: < slack-token-secret >
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 type: Opaque
 EOF
 ```
@@ -340,11 +340,11 @@ metadata:
   labels:
     app: notification-manager
   name: default-webhook-secret
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 type: Opaque
 
 ---
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Config
 metadata:
   name: default-webhook-config
@@ -353,7 +353,7 @@ metadata:
     type: default
 
 ---
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Receiver
 metadata:
   name: global-webhook-receiver
@@ -401,11 +401,11 @@ metadata:
   labels:
     app: notification-manager
   name: default-dingtalk-secret
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 type: Opaque
 
 ---
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Config
 metadata:
   name: default-dingtalk-config
@@ -423,7 +423,7 @@ spec:
         name: default-dingtalk-secret
 
 ---
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Receiver
 metadata:
   name: global-dingtalk-receiver
@@ -441,7 +441,7 @@ spec:
         key: webhook
         name: default-dingtalk-secret
       keywords: 
-      - kubesphere
+      - d3os
       secret:
         key: secret
         name: default-dingtalk-secret
@@ -456,12 +456,12 @@ EOF
 
 ### Deploy Notification Manager in any other Kubernetes cluster (Uses `namespace` to distinguish each tenant user):
 
-Deploying Notification Manager in Kubernetes is similar to deploying it in KubeSphere, the differences are:
+Deploying Notification Manager in Kubernetes is similar to deploying it in D3os, the differences are:
 
 Firstly, change the `tenantKey` to `namespace` like this.
 
 ```
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: NotificationManager
 metadata:
   name: notification-manager
@@ -474,7 +474,7 @@ Secondly, change the label of receiver and config from `user: ${user}` to `names
 
 ```
 cat <<EOF | kubectl apply -f -
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Config
 metadata:
   labels:
@@ -494,7 +494,7 @@ spec:
       host: imap.xyz.com
       port: 25
 ---
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Receiver
 metadata:
   labels:
@@ -519,7 +519,7 @@ A receiver can filter alerts by setting a label selector, only alerts that match
 Here is a sample, this receiver will only receive alerts from auditing.
 
 ```
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Receiver
 metadata:
   labels:
@@ -544,7 +544,7 @@ It can set a global template, or set a template for each type of receivers. If t
 
 ```shell
 cat <<EOF | kubectl apply -f -
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: NotificationManager
 metadata:
   name: notification-manager
@@ -608,7 +608,7 @@ To receive Alertmanager alerts, add webhook config like below to the `receivers`
     "receivers":
      - "name": "notification-manager"
        "webhook_configs":
-       - "url": "http://notification-manager-svc.kubesphere-monitoring-system.svc:19093/api/v2/alerts"
+       - "url": "http://notification-manager-svc.d3os-monitoring-system.svc:19093/api/v2/alerts"
 ```
 
 ## Update
@@ -636,7 +636,7 @@ There are some breaking changes in v1.0.0 :
         authPassword:
           key: password
           name: user1-email-secret
-          namespace: kubesphere-monitoring-system
+          namespace: d3os-monitoring-system
 ```
 
 - Move the configuration of DingTalk chatbot from dingtalk config to dingtalk receiver.
@@ -654,7 +654,7 @@ You can update the v0.x to the v1.0 by following this.
 Firstly, backup the old crds and converts to new crds.
 
 ```shell
-curl -o update.sh https://raw.githubusercontent.com/kubesphere/notification-manager/release-1.0/config/update/update.sh && sh update.sh
+curl -o update.sh https://raw.githubusercontent.com/d3os/notification-manager/release-1.0/config/update/update.sh && sh update.sh
 ```
 
 >This command will generate two directories, backup and crds. The `backup` directory store the old crds, and the `crds` directory store the new crds
@@ -662,23 +662,23 @@ curl -o update.sh https://raw.githubusercontent.com/kubesphere/notification-mana
 Secondly, delete old crds.
 
 ```shell
-kubectl delete --ignore-not-found=true crd notificationmanagers.notification.kubesphere.io
-kubectl delete --ignore-not-found=true crd dingtalkconfigs.notification.kubesphere.io
-kubectl delete --ignore-not-found=true crd dingtalkreceivers.notification.kubesphere.io
-kubectl delete --ignore-not-found=true crd emailconfigs.notification.kubesphere.io
-kubectl delete --ignore-not-found=true crd emailreceivers.notification.kubesphere.io
-kubectl delete --ignore-not-found=true crd slackconfigs.notification.kubesphere.io
-kubectl delete --ignore-not-found=true crd slackreceivers.notification.kubesphere.io
-kubectl delete --ignore-not-found=true crd webhookconfigs.notification.kubesphere.io
-kubectl delete --ignore-not-found=true crd webhookreceivers.notification.kubesphere.io
-kubectl delete --ignore-not-found=true crd wechatconfigs.notification.kubesphere.io
-kubectl delete --ignore-not-found=true crd wechatreceivers.notification.kubesphere.io
+kubectl delete --ignore-not-found=true crd notificationmanagers.notification.d3os.io
+kubectl delete --ignore-not-found=true crd dingtalkconfigs.notification.d3os.io
+kubectl delete --ignore-not-found=true crd dingtalkreceivers.notification.d3os.io
+kubectl delete --ignore-not-found=true crd emailconfigs.notification.d3os.io
+kubectl delete --ignore-not-found=true crd emailreceivers.notification.d3os.io
+kubectl delete --ignore-not-found=true crd slackconfigs.notification.d3os.io
+kubectl delete --ignore-not-found=true crd slackreceivers.notification.d3os.io
+kubectl delete --ignore-not-found=true crd webhookconfigs.notification.d3os.io
+kubectl delete --ignore-not-found=true crd webhookreceivers.notification.d3os.io
+kubectl delete --ignore-not-found=true crd wechatconfigs.notification.d3os.io
+kubectl delete --ignore-not-found=true crd wechatreceivers.notification.d3os.io
 ```
 
 Thirdly, deploy the notification-manager of the latest version.
 
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/kubesphere/notification-manager/master/config/bundle.yaml
+kubectl apply -f https://raw.githubusercontent.com/d3os/notification-manager/master/config/bundle.yaml
 ```
 
 Finally, deploy configs and receivers.

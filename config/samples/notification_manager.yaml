@@ -1,4 +1,4 @@
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: NotificationManager
 metadata:
   name: notification-manager
@@ -11,7 +11,7 @@ spec:
     requests:
       cpu: 100m
       memory: 20Mi
-  image: kubesphere/notification-manager:v1.0.0
+  image: d3os/notification-manager:v1.0.0
   imagePullPolicy: Always
   serviceAccountName: notification-manager-sa
   portName: webhook

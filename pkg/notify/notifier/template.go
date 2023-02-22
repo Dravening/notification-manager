@@ -46,7 +46,7 @@ func NewTemplate(paths []string) (*Template, error) {
 	if err != nil {
 		return nil, err
 	}
-	tmpl.ExternalURL, _ = url.Parse("http://kubesphere.io")
+	tmpl.ExternalURL, _ = url.Parse("http://d3os.io")
 
 	t.Tmpl = tmpl
 	notifierTemplate = t

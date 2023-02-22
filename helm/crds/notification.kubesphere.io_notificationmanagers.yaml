@@ -6,9 +6,9 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.4.1
   creationTimestamp: null
-  name: notificationmanagers.notification.kubesphere.io
+  name: notificationmanagers.notification.d3os.io
 spec:
-  group: notification.kubesphere.io
+  group: notification.d3os.io
   names:
     categories:
     - notification-manager
@@ -693,7 +693,7 @@ spec:
                 type: string
               image:
                 description: Docker Image used to start Notification Manager container,
-                  for example kubesphere/notification-manager:v0.1.0
+                  for example d3os/notification-manager:v0.1.0
                 type: string
               imagePullPolicy:
                 description: Image pull policy. One of Always, Never, IfNotPresent.

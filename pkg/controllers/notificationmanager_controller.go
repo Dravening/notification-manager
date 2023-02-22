@@ -18,7 +18,7 @@ package controllers
 
 import (
 	"context"
-	"github.com/kubesphere/notification-manager/pkg/apis/v2beta1"
+	"github.com/d3os/notification-manager/pkg/apis/v2beta1"
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 
@@ -43,7 +43,7 @@ var (
 	apiGVStr               = v2beta1.GroupVersion.String()
 	log                    logr.Logger
 	minReplicas            int32 = 1
-	defaultImage                 = "kubesphere/notification-manager:v1.0.0"
+	defaultImage                 = "d3os/notification-manager:v1.0.0"
 	defaultImagePullPolicy       = corev1.PullIfNotPresent
 )
 
@@ -57,8 +57,8 @@ type NotificationManagerReconciler struct {
 
 // Reconcile reads that state of NotificationManager objects and makes changes based on the state read
 // and what is in the NotificationManagerSpec
-// +kubebuilder:rbac:groups=notification.kubesphere.io,resources=notificationmanagers;receivers;configs,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=notification.kubesphere.io,resources=notificationmanagers/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=notification.d3os.io,resources=notificationmanagers;receivers;configs,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=notification.d3os.io,resources=notificationmanagers/status,verbs=get;update;patch
 // +kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=core,resources=services,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=core,resources=secrets,verbs=get;list;watch

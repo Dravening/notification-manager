@@ -1,4 +1,4 @@
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Receiver
 metadata:
   name: global-receiver
@@ -15,7 +15,7 @@ spec:
         key: webhook
         name: global-receiver-secret
       keywords:
-        - kubesphere
+        - d3os
       secret:
         key: secret
         name: global-receiver-secret

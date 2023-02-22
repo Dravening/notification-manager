@@ -3,8 +3,8 @@ package config
 import (
 	"errors"
 	"fmt"
+	"github.com/d3os/notification-manager/pkg/apis/v2beta1"
 	"github.com/go-kit/kit/log/level"
-	"github.com/kubesphere/notification-manager/pkg/apis/v2beta1"
 	"github.com/modern-go/reflect2"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"sigs.k8s.io/controller-runtime/pkg/client"

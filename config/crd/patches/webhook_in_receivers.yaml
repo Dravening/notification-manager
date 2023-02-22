@@ -3,7 +3,7 @@
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  name: receivers.notification.kubesphere.io
+  name: receivers.notification.d3os.io
 spec:
   conversion:
     strategy: Webhook

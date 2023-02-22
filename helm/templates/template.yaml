@@ -104,4 +104,4 @@ data:
 kind: ConfigMap
 metadata:
   name: notification-manager-template
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system

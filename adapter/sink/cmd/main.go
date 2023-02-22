@@ -1,5 +1,5 @@
 /*
-Copyright 2020 The KubeSphere Authors.
+Copyright 2020 The D3os Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -323,13 +323,13 @@ func getMessage(alert *Alert) string {
 		level)
 }
 
-//readiness
+// readiness
 func readiness(_ *restful.Request, resp *restful.Response) {
 
 	responseWithHeaderAndEntity(resp, http.StatusOK, "")
 }
 
-//preStop
+// preStop
 func preStop(_ *restful.Request, resp *restful.Response) {
 
 	waitHandlerGroup.Wait()
@@ -339,12 +339,12 @@ func preStop(_ *restful.Request, resp *restful.Response) {
 	glog.Flush()
 }
 
-//get statistics fresh time
+// get statistics fresh time
 func statisticsFreshTimeGet(_ *restful.Request, resp *restful.Response) {
 	responseWithJson(resp, si.FreshTime)
 }
 
-//set statistics fresh time
+// set statistics fresh time
 func statisticsFreshTimeUpdate(req *restful.Request, resp *restful.Response) {
 
 	s := req.QueryParameter("freshTime")
@@ -358,12 +358,12 @@ func statisticsFreshTimeUpdate(req *restful.Request, resp *restful.Response) {
 	responseWithJson(resp, "Success")
 }
 
-//get statistics status
+// get statistics status
 func statisticsStatusGet(_ *restful.Request, resp *restful.Response) {
 	responseWithJson(resp, si.Enable)
 }
 
-//set statistics status
+// set statistics status
 func statisticsStatusUpdate(req *restful.Request, resp *restful.Response) {
 
 	enable := req.QueryParameter("enable")
@@ -377,7 +377,7 @@ func statisticsStatusUpdate(req *restful.Request, resp *restful.Response) {
 	responseWithJson(resp, "Success")
 }
 
-//get statistics info
+// get statistics info
 func statisticsInfo(_ *restful.Request, resp *restful.Response) {
 	responseWithJson(resp, si.Print())
 }

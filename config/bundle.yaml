@@ -3,9 +3,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.4.1
-  name: configs.notification.kubesphere.io
+  name: configs.notification.d3os.io
 spec:
-  group: notification.kubesphere.io
+  group: notification.d3os.io
   names:
     categories:
     - notification-manager
@@ -284,9 +284,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.4.1
-  name: notificationmanagers.notification.kubesphere.io
+  name: notificationmanagers.notification.d3os.io
 spec:
-  group: notification.kubesphere.io
+  group: notification.d3os.io
   names:
     categories:
     - notification-manager
@@ -694,7 +694,7 @@ spec:
                 description: The default namespace to which notification manager secrets belong.
                 type: string
               image:
-                description: Docker Image used to start Notification Manager container, for example kubesphere/notification-manager:v0.1.0
+                description: Docker Image used to start Notification Manager container, for example d3os/notification-manager:v0.1.0
                 type: string
               imagePullPolicy:
                 description: Image pull policy. One of Always, Never, IfNotPresent. Defaults to IfNotPresent if not specified
@@ -1808,9 +1808,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.4.1
-  name: receivers.notification.kubesphere.io
+  name: receivers.notification.d3os.io
 spec:
-  group: notification.kubesphere.io
+  group: notification.d3os.io
   names:
     categories:
     - notification-manager
@@ -2395,13 +2395,13 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: notification-manager-sa
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: notification-manager-leader-election-role
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 rules:
 - apiGroups:
   - ""
@@ -2468,7 +2468,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - notification.kubesphere.io
+  - notification.d3os.io
   resources:
   - configs
   - notificationmanagers
@@ -2482,7 +2482,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - notification.kubesphere.io
+  - notification.d3os.io
   resources:
   - notificationmanagers/status
   verbs:
@@ -2530,7 +2530,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: notification-manager-leader-election-rolebinding
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -2538,7 +2538,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: notification-manager-sa
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -2551,7 +2551,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: notification-manager-sa
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -2564,7 +2564,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: notification-manager-sa
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 ---
 apiVersion: v1
 kind: Service
@@ -2572,7 +2572,7 @@ metadata:
   labels:
     control-plane: controller-manager
   name: notification-manager-controller-metrics
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 spec:
   ports:
   - name: https
@@ -2587,7 +2587,7 @@ metadata:
   labels:
     control-plane: controller-manager
   name: notification-manager-operator
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 spec:
   replicas: 1
   selector:
@@ -2604,7 +2604,7 @@ spec:
         - --upstream=http://127.0.0.1:8080/
         - --logtostderr=true
         - --v=10
-        image: kubesphere/kube-rbac-proxy:v0.8.0
+        image: d3os/kube-rbac-proxy:v0.8.0
         name: kube-rbac-proxy
         ports:
         - containerPort: 8443
@@ -2620,7 +2620,7 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: metadata.namespace
-        image: kubesphere/notification-manager-operator:v1.0.0
+        image: d3os/notification-manager-operator:v1.0.0
         imagePullPolicy: Always
         name: notification-manager-operator
         resources:

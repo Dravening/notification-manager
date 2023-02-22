@@ -6,7 +6,7 @@
       "status": "firing",
       "labels": {
         "alertname": "KubeletDown",
-        "prometheus": "kubesphere-monitoring-system/k8s",
+        "prometheus": "d3os-monitoring-system/k8s",
         "severity": "critical"
       },
       "annotations": {
@@ -24,7 +24,7 @@
   },
   "commonLabels": {
     "alertname": "KubeletDown",
-    "prometheus": "kubesphere-monitoring-system/k8s",
+    "prometheus": "d3os-monitoring-system/k8s",
     "severity": "critical"
   },
   "commonAnnotations": {

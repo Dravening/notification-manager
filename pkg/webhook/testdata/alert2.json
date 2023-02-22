@@ -7,13 +7,13 @@
       "labels": {
         "alertname": "CPUThrottlingHigh",
         "container": "default-http-backend",
-        "namespace": "kubesphere-controls-system",
+        "namespace": "d3os-controls-system",
         "pod": "default-http-backend-6555ff6898-5w7gk",
-        "prometheus": "kubesphere-monitoring-system/k8s",
+        "prometheus": "d3os-monitoring-system/k8s",
         "severity": "warning"
       },
       "annotations": {
-        "message": "30.61% throttling of CPU in namespace kubesphere-controls-system for container default-http-backend in pod default-http-backend-6555ff6898-5w7gk.",
+        "message": "30.61% throttling of CPU in namespace d3os-controls-system for container default-http-backend in pod default-http-backend-6555ff6898-5w7gk.",
         "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.md#alert-name-cputhrottlinghigh"
       },
       "startsAt": "2020-04-17T01:02:44.782098546Z",
@@ -24,18 +24,18 @@
   ],
   "groupLabels": {
     "alertname": "CPUThrottlingHigh",
-    "namespace": "kubesphere-controls-system"
+    "namespace": "d3os-controls-system"
   },
   "commonLabels": {
     "alertname": "CPUThrottlingHigh",
     "container": "default-http-backend",
-    "namespace": "kubesphere-controls-system",
+    "namespace": "d3os-controls-system",
     "pod": "default-http-backend-6555ff6898-5w7gk",
-    "prometheus": "kubesphere-monitoring-system/k8s",
+    "prometheus": "d3os-monitoring-system/k8s",
     "severity": "warning"
   },
   "commonAnnotations": {
-    "message": "30.61% throttling of CPU in namespace kubesphere-controls-system for container default-http-backend in pod default-http-backend-6555ff6898-5w7gk.",
+    "message": "30.61% throttling of CPU in namespace d3os-controls-system for container default-http-backend in pod default-http-backend-6555ff6898-5w7gk.",
     "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.md#alert-name-cputhrottlinghigh"
   },
   "externalURL": "http://alertmanager-main-2:9093"

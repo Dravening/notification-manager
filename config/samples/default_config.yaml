@@ -1,4 +1,4 @@
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Config
 metadata:
   name: default-config

@@ -6,9 +6,9 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.4.1
   creationTimestamp: null
-  name: configs.notification.kubesphere.io
+  name: configs.notification.d3os.io
 spec:
-  group: notification.kubesphere.io
+  group: notification.d3os.io
   names:
     categories:
     - notification-manager

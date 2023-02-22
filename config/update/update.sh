@@ -10,7 +10,7 @@ fi
 
 notification_namespace=$2
 if [ "$notification_namespace" = "" ]; then
-  notification_namespace="kubesphere-monitoring-system"
+  notification_namespace="d3os-monitoring-system"
 fi
 
 mkdir -p $backup_dir
@@ -18,95 +18,95 @@ mkdir -p $output_dir
 
 backup_v1alpha1() {
   # export notification manager
-  src=$(kubectl get notificationmanagers.notification.kubesphere.io -n "$notification_namespace" "$notification_name" -o json)
+  src=$(kubectl get notificationmanagers.notification.d3os.io -n "$notification_namespace" "$notification_name" -o json)
   # shellcheck disable=SC2046
   echo "$src" | jq >"${backup_dir}"/notification-manager-"$(echo "$src" | jq -r '.metadata.namespace')"-"$(echo "$src" | jq -r '.metadata.name')".json
 
   # export dingtalk config
   # shellcheck disable=SC2207
-  local ns=($(kubectl get dingtalkconfigs.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $1}'))
+  local ns=($(kubectl get dingtalkconfigs.notification.d3os.io -A | sed -n '1!p' | awk '{print $1}'))
   # shellcheck disable=SC2207
-  dingtalkconfigs=($(kubectl get dingtalkconfigs.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $2}'))
+  dingtalkconfigs=($(kubectl get dingtalkconfigs.notification.d3os.io -A | sed -n '1!p' | awk '{print $2}'))
 
   for ((i = 0; i < ${#ns[@]}; i++)); do
-    src=$(kubectl get dingtalkconfigs.notification.kubesphere.io "${dingtalkconfigs[i]}" -n "${ns[i]}" -ojson)
+    src=$(kubectl get dingtalkconfigs.notification.d3os.io "${dingtalkconfigs[i]}" -n "${ns[i]}" -ojson)
     echo "$src" | jq >"${backup_dir}/dingtalkconfig-$(echo "$src" | jq -r '.metadata.namespace')-$(echo "$src" | jq -r '.metadata.name').json"
   done
 
   # export email config
   # shellcheck disable=SC2207
-  local ns=($(kubectl get emailconfigs.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $1}'))
+  local ns=($(kubectl get emailconfigs.notification.d3os.io -A | sed -n '1!p' | awk '{print $1}'))
   # shellcheck disable=SC2207
-  emailconfigs=($(kubectl get emailconfigs.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $2}'))
+  emailconfigs=($(kubectl get emailconfigs.notification.d3os.io -A | sed -n '1!p' | awk '{print $2}'))
 
   for ((i = 0; i < ${#ns[@]}; i++)); do
-    src=$(kubectl get emailconfigs.notification.kubesphere.io "${emailconfigs[i]}" -n "${ns[i]}" -ojson)
+    src=$(kubectl get emailconfigs.notification.d3os.io "${emailconfigs[i]}" -n "${ns[i]}" -ojson)
     echo "$src" | jq >"${backup_dir}/emailconfig-$(echo "$src" | jq -r '.metadata.namespace')-$(echo "$src" | jq -r '.metadata.name').json"
   done
 
   # export email receiver
   # shellcheck disable=SC2207
-  local ns=($(kubectl get emailreceivers.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $1}'))
+  local ns=($(kubectl get emailreceivers.notification.d3os.io -A | sed -n '1!p' | awk '{print $1}'))
   # shellcheck disable=SC2207
-  emailreceivers=($(kubectl get emailreceivers.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $2}'))
+  emailreceivers=($(kubectl get emailreceivers.notification.d3os.io -A | sed -n '1!p' | awk '{print $2}'))
 
   for ((i = 0; i < ${#ns[@]}; i++)); do
-    src=$(kubectl get emailreceivers.notification.kubesphere.io "${emailreceivers[i]}" -n "${ns[i]}" -ojson)
+    src=$(kubectl get emailreceivers.notification.d3os.io "${emailreceivers[i]}" -n "${ns[i]}" -ojson)
     echo "$src" | jq >"${backup_dir}/emailreceiver-$(echo "$src" | jq -r '.metadata.namespace')-$(echo "$src" | jq -r '.metadata.name').json"
   done
 
   # export slack config
   # shellcheck disable=SC2207
-  local ns=($(kubectl get slackconfigs.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $1}'))
+  local ns=($(kubectl get slackconfigs.notification.d3os.io -A | sed -n '1!p' | awk '{print $1}'))
   # shellcheck disable=SC2207
-  slackconfigs=($(kubectl get slackconfigs.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $2}'))
+  slackconfigs=($(kubectl get slackconfigs.notification.d3os.io -A | sed -n '1!p' | awk '{print $2}'))
 
   for ((i = 0; i < ${#ns[@]}; i++)); do
-    src=$(kubectl get slackconfigs.notification.kubesphere.io "${slackconfigs[i]}" -n "${ns[i]}" -ojson)
+    src=$(kubectl get slackconfigs.notification.d3os.io "${slackconfigs[i]}" -n "${ns[i]}" -ojson)
     echo "$src" | jq >"${backup_dir}/slackconfig-$(echo "$src" | jq -r '.metadata.namespace')-$(echo "$src" | jq -r '.metadata.name').json"
   done
 
   # export slack receiver
   # shellcheck disable=SC2207
-  local ns=($(kubectl get slackreceivers.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $1}'))
+  local ns=($(kubectl get slackreceivers.notification.d3os.io -A | sed -n '1!p' | awk '{print $1}'))
   # shellcheck disable=SC2207
-  slackreceivers=($(kubectl get slackreceivers.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $2}'))
+  slackreceivers=($(kubectl get slackreceivers.notification.d3os.io -A | sed -n '1!p' | awk '{print $2}'))
 
   for ((i = 0; i < ${#ns[@]}; i++)); do
-    src=$(kubectl get slackreceivers.notification.kubesphere.io "${slackreceivers[i]}" -n "${ns[i]}" -ojson)
+    src=$(kubectl get slackreceivers.notification.d3os.io "${slackreceivers[i]}" -n "${ns[i]}" -ojson)
     echo "$src" | jq >"${backup_dir}/slackreceiver-$(echo "$src" | jq -r '.metadata.namespace')-$(echo "$src" | jq -r '.metadata.name').json"
   done
 
   # export webhook config
   # shellcheck disable=SC2207
-  local ns=($(kubectl get webhookconfigs.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $1}'))
+  local ns=($(kubectl get webhookconfigs.notification.d3os.io -A | sed -n '1!p' | awk '{print $1}'))
   # shellcheck disable=SC2207
-  webhookconfigs=($(kubectl get webhookconfigs.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $2}'))
+  webhookconfigs=($(kubectl get webhookconfigs.notification.d3os.io -A | sed -n '1!p' | awk '{print $2}'))
 
   for ((i = 0; i < ${#ns[@]}; i++)); do
-    src=$(kubectl get webhookconfigs.notification.kubesphere.io "${webhookconfigs[i]}" -n "${ns[i]}" -ojson)
+    src=$(kubectl get webhookconfigs.notification.d3os.io "${webhookconfigs[i]}" -n "${ns[i]}" -ojson)
     echo "$src" | jq >"${backup_dir}"/webhookconfig-"$(echo "$src" | jq -r '.metadata.namespace')"-"$(echo "$src" | jq -r '.metadata.name')".json
   done
 
   # export wechat config
   # shellcheck disable=SC2207
-  local ns=($(kubectl get wechatconfigs.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $1}'))
+  local ns=($(kubectl get wechatconfigs.notification.d3os.io -A | sed -n '1!p' | awk '{print $1}'))
   # shellcheck disable=SC2207
-  wechatconfigs=($(kubectl get wechatconfigs.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $2}'))
+  wechatconfigs=($(kubectl get wechatconfigs.notification.d3os.io -A | sed -n '1!p' | awk '{print $2}'))
 
   for ((i = 0; i < ${#ns[@]}; i++)); do
-    src=$(kubectl get wechatconfigs.notification.kubesphere.io "${wechatconfigs[i]}" -n "${ns[i]}" -ojson)
+    src=$(kubectl get wechatconfigs.notification.d3os.io "${wechatconfigs[i]}" -n "${ns[i]}" -ojson)
     echo "$src" | jq >"${backup_dir}/wechatconfig-$(echo "$src" | jq -r '.metadata.namespace')-$(echo "$src" | jq -r '.metadata.name').json"
   done
 
   # export wechat receiver
   # shellcheck disable=SC2207
-  local ns=($(kubectl get wechatreceivers.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $1}'))
+  local ns=($(kubectl get wechatreceivers.notification.d3os.io -A | sed -n '1!p' | awk '{print $1}'))
   # shellcheck disable=SC2207
-  wechatreceivers=($(kubectl get wechatreceivers.notification.kubesphere.io -A | sed -n '1!p' | awk '{print $2}'))
+  wechatreceivers=($(kubectl get wechatreceivers.notification.d3os.io -A | sed -n '1!p' | awk '{print $2}'))
 
   for ((i = 0; i < ${#ns[@]}; i++)); do
-    src=$(kubectl get wechatreceivers.notification.kubesphere.io "${wechatreceivers[i]}" -n "${ns[i]}" -ojson)
+    src=$(kubectl get wechatreceivers.notification.d3os.io "${wechatreceivers[i]}" -n "${ns[i]}" -ojson)
     echo "$src" | jq >"${backup_dir}/wechatreceiver-$(echo "$src" | jq -r '.metadata.namespace')-$(echo "$src" | jq -r '.metadata.name').json"
   done
 }
@@ -162,8 +162,8 @@ update_v1alpha1() {
 
     if [ "$kind" = "NotificationManager" ]; then
       resource=$(echo "$src" |
-        jq 'setpath(["apiVersion"]; "notification.kubesphere.io/v2beta1")' |
-        jq 'setpath(["spec", "defaultSecretNamespace"]; "kubesphere-monitoring-federated")' |
+        jq 'setpath(["apiVersion"]; "notification.d3os.io/v2beta1")' |
+        jq 'setpath(["spec", "defaultSecretNamespace"]; "d3os-monitoring-federated")' |
         jq 'del(.metadata.namespace)')
       resource=$(delete_invalid_info "\"$(echo "$resource" | jq -c)\"")
 
@@ -185,7 +185,7 @@ update_v1alpha1() {
       continue
     fi
 
-    resource=$(echo "$src" | jq 'setpath(["apiVersion"]; "notification.kubesphere.io/v2beta1")')
+    resource=$(echo "$src" | jq 'setpath(["apiVersion"]; "notification.d3os.io/v2beta1")')
     name=$(echo "$kind" | awk '{ print tolower($0) }')-$(echo "$resource" | jq -r '.metadata.namespace')-$(echo "$resource" | jq -r '.metadata.name')
     resource=$(echo "$resource" | jq --arg name "$name" 'setpath(["metadata", "name"]; $name)' | jq 'del(.metadata.namespace)')
     resource=$(delete_invalid_info "\"$(echo "$resource" | jq -c)\"")
@@ -405,15 +405,15 @@ update_v2alpha1() {
       fi
 
       resource=$(echo "$src" |
-        jq 'setpath(["apiVersion"]; "notification.kubesphere.io/v2beta1")' |
-        jq 'setpath(["spec", "defaultSecretNamespace"]; "kubesphere-monitoring-federated")')
+        jq 'setpath(["apiVersion"]; "notification.d3os.io/v2beta1")' |
+        jq 'setpath(["spec", "defaultSecretNamespace"]; "d3os-monitoring-federated")')
       resource=$(delete_invalid_info "\"$(echo "$resource" | jq -c)\"")
 
       echo "$resource" | jq >"${output_dir}/notification-manager-$(echo "$resource" | jq -r '.metadata.name').json"
       continue
     fi
 
-    resource=$(echo "$src" | jq 'setpath(["apiVersion"]; "notification.kubesphere.io/v2beta1")')
+    resource=$(echo "$src" | jq 'setpath(["apiVersion"]; "notification.d3os.io/v2beta1")')
     name=$(echo "$kind" | awk '{ print tolower($0) }')-$(echo "$resource" | jq -r '.metadata.name')
     resource=$(echo "$resource" | jq --arg name "$name" 'setpath(["metadata", "name"]; $name)')
     resource=$(delete_invalid_info "\"$(echo "$resource" | jq -c)\"")
@@ -598,7 +598,7 @@ update_v2alpha1() {
   done
 }
 
-version=$(kubectl get crd notificationmanagers.notification.kubesphere.io -o jsonpath='{.spec.versions[0].name}')
+version=$(kubectl get crd notificationmanagers.notification.d3os.io -o jsonpath='{.spec.versions[0].name}')
 if [ "${version}" = "v1alpha1" ]; then
   backup_v1alpha1
   update_v1alpha1

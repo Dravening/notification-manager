@@ -2,12 +2,12 @@ package v1
 
 import (
 	"context"
+	"github.com/d3os/notification-manager/pkg/async"
+	"github.com/d3os/notification-manager/pkg/notify"
+	"github.com/d3os/notification-manager/pkg/notify/config"
 	"github.com/go-kit/kit/log"
 	"github.com/go-kit/kit/log/level"
 	"github.com/json-iterator/go"
-	"github.com/kubesphere/notification-manager/pkg/async"
-	"github.com/kubesphere/notification-manager/pkg/notify"
-	"github.com/kubesphere/notification-manager/pkg/notify/config"
 	"github.com/prometheus/alertmanager/template"
 	"io"
 	"net/http"

@@ -113,16 +113,16 @@ metadata:
   labels:
     app: notification-manager
   name: notification-manager-template
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 ---
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Config
 metadata:
   labels:
     app: notification-manager
     type: default
   name: default-config
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 spec:
   dingtalk:
     conversation:
@@ -154,18 +154,18 @@ spec:
       name: defalut-config-secret
     wechatApiUrl: https://qyapi.weixin.qq.com/cgi-bin/
 ---
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: NotificationManager
 metadata:
   labels:
     app: notification-manager
   name: notification-manager
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 spec:
   defaultConfigSelector:
     matchLabels:
       type: default
-  image: kubesphere/notification-manager:v1.0.0
+  image: d3os/notification-manager:v1.0.0
   imagePullPolicy: Always
   portName: webhook
   receivers:
@@ -209,19 +209,19 @@ spec:
       name: notification-manager-template
     name: notification-manager-template
 ---
-apiVersion: notification.kubesphere.io/v2beta1
+apiVersion: notification.d3os.io/v2beta1
 kind: Receiver
 metadata:
   labels:
     app: notification-manager
     type: global
   name: global-receiver
-  namespace: kubesphere-monitoring-system
+  namespace: d3os-monitoring-system
 spec:
   dingtalk:
     chatbot:
       keywords:
-      - kubesphere
+      - d3os
       secret:
         key: secret
         name: global-receiver-secret

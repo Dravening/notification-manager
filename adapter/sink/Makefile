@@ -1,8 +1,8 @@
-# Copyright 2018 The KubeSphere Authors. All rights reserved.
+# Copyright 2018 The D3os Authors. All rights reserved.
 # Use of this source code is governed by a Apache license
 # that can be found in the LICENSE file.
 
-IMG ?= kubespheredev/notification-adapter:v0.1.1
+IMG ?= d3osdev/notification-adapter:v0.1.1
 AMD64 ?= -amd64
 
 all: docker-build

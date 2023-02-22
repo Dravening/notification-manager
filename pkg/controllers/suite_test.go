@@ -17,7 +17,7 @@ limitations under the License.
 package controllers
 
 import (
-	"github.com/kubesphere/notification-manager/pkg/apis/v2beta1"
+	"github.com/d3os/notification-manager/pkg/apis/v2beta1"
 	"path/filepath"
 	"testing"
 

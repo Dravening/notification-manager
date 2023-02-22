@@ -2,15 +2,15 @@ package notify
 
 import (
 	"context"
+	"github.com/d3os/notification-manager/pkg/async"
+	"github.com/d3os/notification-manager/pkg/notify/config"
+	"github.com/d3os/notification-manager/pkg/notify/notifier"
+	"github.com/d3os/notification-manager/pkg/notify/notifier/dingtalk"
+	"github.com/d3os/notification-manager/pkg/notify/notifier/email"
+	"github.com/d3os/notification-manager/pkg/notify/notifier/slack"
+	"github.com/d3os/notification-manager/pkg/notify/notifier/webhook"
+	"github.com/d3os/notification-manager/pkg/notify/notifier/wechat"
 	"github.com/go-kit/kit/log"
-	"github.com/kubesphere/notification-manager/pkg/async"
-	"github.com/kubesphere/notification-manager/pkg/notify/config"
-	"github.com/kubesphere/notification-manager/pkg/notify/notifier"
-	"github.com/kubesphere/notification-manager/pkg/notify/notifier/dingtalk"
-	"github.com/kubesphere/notification-manager/pkg/notify/notifier/email"
-	"github.com/kubesphere/notification-manager/pkg/notify/notifier/slack"
-	"github.com/kubesphere/notification-manager/pkg/notify/notifier/webhook"
-	"github.com/kubesphere/notification-manager/pkg/notify/notifier/wechat"
 	"github.com/prometheus/alertmanager/template"
 )
 

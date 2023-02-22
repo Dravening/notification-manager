@@ -16,7 +16,7 @@ limitations under the License.
 
 // Package v2beta1 contains API Schema definitions for the notification v1alpha1 API group
 // +kubebuilder:object:generate=true
-// +groupName=notification.kubesphere.io
+// +groupName=notification.d3os.io
 package v2beta1
 
 import (
@@ -26,7 +26,7 @@ import (
 
 var (
 	// GroupVersion is group version used to register these objects
-	GroupVersion = schema.GroupVersion{Group: "notification.kubesphere.io", Version: "v2beta1"}
+	GroupVersion = schema.GroupVersion{Group: "notification.d3os.io", Version: "v2beta1"}
 
 	// SchemeBuilder is used to add go types to the GroupVersionKind scheme
 	SchemeBuilder = &scheme.Builder{GroupVersion: GroupVersion}

@@ -5,7 +5,7 @@ metadata:
   name: notificationmanager-editor-role
 rules:
 - apiGroups:
-  - notification.kubesphere.io
+  - notification.d3os.io
   resources:
   - notificationmanagers
   verbs:
@@ -17,7 +17,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - notification.kubesphere.io
+  - notification.d3os.io
   resources:
   - notificationmanagers/status
   verbs:

@@ -26,8 +26,8 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	"github.com/kubesphere/notification-manager/pkg/apis/v2beta1"
-	"github.com/kubesphere/notification-manager/pkg/controllers"
+	"github.com/d3os/notification-manager/pkg/apis/v2beta1"
+	"github.com/d3os/notification-manager/pkg/controllers"
 	// +kubebuilder:scaffold:imports
 )
 
@@ -65,7 +65,7 @@ func main() {
 		MetricsBindAddress: metricsAddr,
 		Port:               9443,
 		LeaderElection:     enableLeaderElection,
-		LeaderElectionID:   "7b8d27e6.kubesphere.io",
+		LeaderElectionID:   "7b8d27e6.d3os.io",
 	})
 	if err != nil {
 		setupLog.Error(err, "unable to start manager")

@@ -9,7 +9,7 @@
         "container": "container-ztj830",
         "namespace": "t1",
         "pod": "s2i-1-viafnz-5474c8b5b7-px7kz",
-        "prometheus": "kubesphere-monitoring-system/k8s",
+        "prometheus": "d3os-monitoring-system/k8s",
         "severity": "warning"
       },
       "annotations": {
@@ -28,7 +28,7 @@
         "container": "container-ztj830",
         "namespace": "t1",
         "pod": "s2i-1-viafnz-89f49c678-2mzsm",
-        "prometheus": "kubesphere-monitoring-system/k8s",
+        "prometheus": "d3os-monitoring-system/k8s",
         "severity": "warning"
       },
       "annotations": {
@@ -49,7 +49,7 @@
     "alertname": "KubeContainerWaiting",
     "container": "container-ztj830",
     "namespace": "t1",
-    "prometheus": "kubesphere-monitoring-system/k8s",
+    "prometheus": "d3os-monitoring-system/k8s",
     "severity": "warning"
   },
   "commonAnnotations": {

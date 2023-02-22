@@ -12,7 +12,7 @@
         "job_name": "dddd",
         "namespace": "demo-project",
         "pod": "kube-state-metrics-7c6f4866fc-rclv2",
-        "prometheus": "kubesphere-monitoring-system/k8s",
+        "prometheus": "d3os-monitoring-system/k8s",
         "severity": "warning"
       },
       "annotations": {
@@ -37,7 +37,7 @@
     "job_name": "dddd",
     "namespace": "demo-project",
     "pod": "kube-state-metrics-7c6f4866fc-rclv2",
-    "prometheus": "kubesphere-monitoring-system/k8s",
+    "prometheus": "d3os-monitoring-system/k8s",
     "severity": "warning"
   },
   "commonAnnotations": {

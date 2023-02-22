@@ -2,9 +2,9 @@
 # since it depends on service name and namespace that are out of this kustomize package.
 # It should be run by config/default
 resources:
-  - bases/notification.kubesphere.io_notificationmanagers.yaml
-  - bases/notification.kubesphere.io_configs.yaml
-  - bases/notification.kubesphere.io_receivers.yaml
+  - bases/notification.d3os.io_notificationmanagers.yaml
+  - bases/notification.d3os.io_configs.yaml
+  - bases/notification.d3os.io_receivers.yaml
 # +kubebuilder:scaffold:crdkustomizeresource
 
 patchesStrategicMerge:

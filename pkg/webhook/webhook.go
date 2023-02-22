@@ -2,12 +2,12 @@ package webhook
 
 import (
 	"context"
+	"github.com/d3os/notification-manager/pkg/notify/config"
+	whv1 "github.com/d3os/notification-manager/pkg/webhook/v1"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-kit/kit/log"
 	"github.com/go-kit/kit/log/level"
-	"github.com/kubesphere/notification-manager/pkg/notify/config"
-	whv1 "github.com/kubesphere/notification-manager/pkg/webhook/v1"
 	"net/http"
 	"time"
 )

@@ -1,5 +1,5 @@
-domain: kubesphere.io
-repo: github.com/kubesphere/notification-manager
+domain: d3os.io
+repo: github.com/d3os/notification-manager
 resources:
 - group: notification
   kind: NotificationManager

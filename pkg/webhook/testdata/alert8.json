@@ -10,7 +10,7 @@
         "job": "kube-state-metrics",
         "namespace": "pp1",
         "pod": "kube-state-metrics-7c6f4866fc-rclv2",
-        "prometheus": "kubesphere-monitoring-system/k8s",
+        "prometheus": "d3os-monitoring-system/k8s",
         "severity": "critical",
         "statefulset": "dd1"
       },
@@ -34,7 +34,7 @@
     "job": "kube-state-metrics",
     "namespace": "pp1",
     "pod": "kube-state-metrics-7c6f4866fc-rclv2",
-    "prometheus": "kubesphere-monitoring-system/k8s",
+    "prometheus": "d3os-monitoring-system/k8s",
     "severity": "critical",
     "statefulset": "dd1"
   },

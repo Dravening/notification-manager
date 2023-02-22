@@ -40,7 +40,7 @@ type NotificationManagerSpec struct {
 	// Compute Resources required by container.
 	Resources v1.ResourceRequirements `json:"resources,omitempty"`
 	// Docker Image used to start Notification Manager container,
-	// for example kubesphere/notification-manager:v0.1.0
+	// for example d3os/notification-manager:v0.1.0
 	Image *string `json:"image,omitempty"`
 	// Image pull policy. One of Always, Never, IfNotPresent.
 	// Defaults to IfNotPresent if not specified

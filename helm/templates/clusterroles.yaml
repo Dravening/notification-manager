@@ -36,7 +36,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - notification.kubesphere.io
+  - notification.d3os.io
   resources:
   - dingtalkconfigs
   - dingtalkreceivers
@@ -59,7 +59,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - notification.kubesphere.io
+  - notification.d3os.io
   resources:
   - notificationmanagers/status
   verbs:

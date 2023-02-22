@@ -1,4 +1,4 @@
-module github.com/kubesphere/notification-manager
+module github.com/d3os/notification-manager
 
 go 1.13
 

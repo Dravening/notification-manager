@@ -1,8 +1,8 @@
-# Copyright 2018 The KubeSphere Authors. All rights reserved.
+# Copyright 2018 The D3os Authors. All rights reserved.
 # Use of this source code is governed by a Apache license
 # that can be found in the LICENSE file.
 
-# Copyright 2018 The KubeSphere Authors. All rights reserved.
+# Copyright 2018 The D3os Authors. All rights reserved.
 # Use of this source code is governed by a Apache license
 # that can be found in the LICENSE file.
 
@@ -18,10 +18,10 @@ FROM alpine:3.9
 
 COPY --from=notification-adapter /notification-adapter /usr/local/bin/
 
-RUN adduser -D -g kubesphere -u 1002 kubesphere && \
-    chown -R kubesphere:kubesphere /usr/local/bin/notification-adapter && \
+RUN adduser -D -g d3os -u 1002 d3os && \
+    chown -R d3os:d3os /usr/local/bin/notification-adapter && \
     apk add libcap && \
     setcap 'CAP_NET_BIND_SERVICE=+ep' /usr/local/bin/notification-adapter
 
-USER kubesphere
+USER d3os
 CMD ["sh"]

@@ -3,9 +3,9 @@ package config
 import (
 	"context"
 	"fmt"
+	"github.com/d3os/notification-manager/pkg/apis/v2beta1"
 	"github.com/go-kit/kit/log"
 	"github.com/go-kit/kit/log/level"
-	"github.com/kubesphere/notification-manager/pkg/apis/v2beta1"
 	"k8s.io/api/core/v1"
 	rbacv1 "k8s.io/api/rbac/v1"
 	"k8s.io/apimachinery/pkg/api/meta"
@@ -421,7 +421,7 @@ func (c *Config) tenantIDFromNs(namespace *string) ([]string, error) {
 		return tenantIDs, nil
 	}
 
-	// Find User in rolebinding for KubeSphere
+	// Find User in rolebinding for D3os
 	rbList := rbacv1.RoleBindingList{}
 	if err := c.cache.List(c.ctx, &rbList, client.InNamespace(*namespace)); err != nil {
 		_ = level.Error(c.logger).Log("msg", "Failed to list rolebinding", "err", err)

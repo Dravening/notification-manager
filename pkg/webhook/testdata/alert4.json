@@ -7,13 +7,13 @@
       "labels": {
         "alertname": "CPUThrottlingHigh",
         "container": "grafana",
-        "namespace": "kubesphere-monitoring-system",
+        "namespace": "d3os-monitoring-system",
         "pod": "grafana-6f476b6dd8-2dpzg",
-        "prometheus": "kubesphere-monitoring-system/k8s",
+        "prometheus": "d3os-monitoring-system/k8s",
         "severity": "warning"
       },
       "annotations": {
-        "message": "32.26% throttling of CPU in namespace kubesphere-monitoring-system for container grafana in pod grafana-6f476b6dd8-2dpzg.",
+        "message": "32.26% throttling of CPU in namespace d3os-monitoring-system for container grafana in pod grafana-6f476b6dd8-2dpzg.",
         "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.md#alert-name-cputhrottlinghigh"
       },
       "startsAt": "2020-04-16T09:07:14.782098546Z",
@@ -24,18 +24,18 @@
   ],
   "groupLabels": {
     "alertname": "CPUThrottlingHigh",
-    "namespace": "kubesphere-monitoring-system"
+    "namespace": "d3os-monitoring-system"
   },
   "commonLabels": {
     "alertname": "CPUThrottlingHigh",
     "container": "grafana",
-    "namespace": "kubesphere-monitoring-system",
+    "namespace": "d3os-monitoring-system",
     "pod": "grafana-6f476b6dd8-2dpzg",
-    "prometheus": "kubesphere-monitoring-system/k8s",
+    "prometheus": "d3os-monitoring-system/k8s",
     "severity": "warning"
   },
   "commonAnnotations": {
-    "message": "32.26% throttling of CPU in namespace kubesphere-monitoring-system for container grafana in pod grafana-6f476b6dd8-2dpzg.",
+    "message": "32.26% throttling of CPU in namespace d3os-monitoring-system for container grafana in pod grafana-6f476b6dd8-2dpzg.",
     "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.md#alert-name-cputhrottlinghigh"
   },
   "externalURL": "http://alertmanager-main-2:9093"

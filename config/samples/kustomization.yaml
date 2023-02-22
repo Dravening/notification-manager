@@ -4,7 +4,7 @@ resources:
 - template.yaml
 - notification_manager.yaml
 
-namespace: kubesphere-monitoring-system
+namespace: d3os-monitoring-system
 
 commonLabels:
   app: notification-manager

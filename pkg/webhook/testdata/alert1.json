@@ -11,7 +11,7 @@
         "job": "kube-state-metrics",
         "namespace": "pp1",
         "pod": "dd1-0",
-        "prometheus": "kubesphere-monitoring-system/k8s",
+        "prometheus": "d3os-monitoring-system/k8s",
         "severity": "critical"
       },
       "annotations": {
@@ -35,7 +35,7 @@
     "job": "kube-state-metrics",
     "namespace": "pp1",
     "pod": "dd1-0",
-    "prometheus": "kubesphere-monitoring-system/k8s",
+    "prometheus": "d3os-monitoring-system/k8s",
     "severity": "critical"
   },
   "commonAnnotations": {
